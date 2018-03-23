@@ -12,6 +12,6 @@ class UserController {
 }
 
 export const userComponent = {
-  template: require('./user.component.html'),
+  templateUrl: './user.component.html',
   controller: UserController
 }

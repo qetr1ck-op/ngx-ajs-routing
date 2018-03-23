@@ -4,10 +4,10 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'dp-projects',
-  template: require('./projects.component.html')
+  templateUrl: './projects.component.html'
 })
 export class ProjectsComponent implements OnInit{
-  private routerData$: Observable<any>;
+  public routerData$: Observable<any>;
 
   constructor(private route: ActivatedRoute, @Inject('ajs.location') public $location: ng.ILocationService) {}
 

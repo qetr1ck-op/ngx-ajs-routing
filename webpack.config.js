@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
+const {AngularCompilerPlugin} = require('@ngtools/webpack')
 
 module.exports = {
   entry: './src/main.ts',
@@ -19,22 +20,29 @@ module.exports = {
         loader: 'html-loader'
       },
       {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        loader: 'ts-loader'
+        test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
+        loader: '@ngtools/webpack'
       },
       {
         test: /\.less$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'less-loader']
       },
-      { 
+      {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: 'url-loader?limit=100000' 
+        loader: 'url-loader?limit=100000'
       }
     ]
   },
   plugins: [
+
+    new AngularCompilerPlugin({
+      tsConfigPath: 'src/tsconfig.app.json',
+      mainPath: 'main.ts',
+      // skipCodeGeneration: true,
+      // sourceMap: true
+    }),
+
     new HtmlPlugin({
       template: resolve(__dirname, 'src', 'index.html')
     })

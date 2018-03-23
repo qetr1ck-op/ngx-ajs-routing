@@ -10,6 +10,16 @@ class UsersController {
 
 
 export const usersComponent = {
-  template: require('./users.component.html'),
+  template: `
+  <div class="ajs-cmp">
+    <b>Users component</b>
+    <button
+      class="btn btn-primary btn-sm"
+      ng-click="$ctrl.navigateToAngular()">
+      Go to Angular Project component
+    </button>
+    <div ui-view></div>
+  </div>
+  `,
   controller: UsersController
 }

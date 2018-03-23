@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'dp-project',
-  template: require('./project.component.html')
+  templateUrl: './project.component.html'
 })
 export class ProjectComponent {
   public routeParams$: any;
